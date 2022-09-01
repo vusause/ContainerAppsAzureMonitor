@@ -1,0 +1,27 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "location": {
+      "defaultValue": "Australia East",
+      "type": "string"
+    },
+    "environment_name": {
+      "defaultValue": "myenvironment",
+      "type": "string"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.App/managedEnvironments",
+      "apiVersion": "2022-03-01",
+      "name": "[parameters('environment_name')]",
+      "location": "[parameters('location')]",
+      "properties": {
+          "appLogsConfiguration": {
+          "destination": "azure-monitor"
+          }
+      }
+    }
+  ]
+}

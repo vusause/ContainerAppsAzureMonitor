@@ -1,0 +1,51 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "containerappName": {
+      "defaultValue": "mycontainerapp",
+      "type": "String"
+    },
+    "location": {
+      "defaultValue": "Australia East",
+      "type": "String"
+    },
+    "environment_name": {
+      "defaultValue": "myenvironment",
+      "type": "String"
+    }
+  },
+  "variables": {},
+  "resources": [
+    {
+      "apiVersion": "2022-03-01",
+      "type": "Microsoft.App/containerApps",
+      "name": "[parameters('containerappName')]",
+      "location": "[parameters('location')]",
+      "identity": {
+        "type": "None"
+      },
+      "properties": {
+        "managedEnvironmentId": "[resourceId('Microsoft.App/managedEnvironments', parameters('environment_name'))]",
+        "template": {
+          "containers": [
+            {
+              "name": "main",
+              "image": "busybox",
+              "command": [ "/bin/sh", "-c", "--" ],
+              "args": ["while true; do echo $(date); sleep 1; done"],
+              "resources": {
+                "cpu": 0.5,
+                "memory": "1Gi"
+              }
+            }
+          ],
+          "scale": {
+            "minReplicas": 1,
+            "maxReplicas": 3
+          }
+        }
+      }
+    }
+  ]
+}

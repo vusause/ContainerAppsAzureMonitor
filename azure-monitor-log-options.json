@@ -1,0 +1,20 @@
+[
+  {
+    "category": "ContainerAppConsoleLogs",
+    "categoryGroup": null,
+    "enabled": true,
+    "retentionPolicy": {
+      "days": 0,
+      "enabled": false
+    }
+  },
+  {
+    "category": "ContainerAppSystemLogs",
+    "categoryGroup": null,
+    "enabled": true,
+    "retentionPolicy": {
+      "days": 0,
+      "enabled": false
+    }
+  }
+]
