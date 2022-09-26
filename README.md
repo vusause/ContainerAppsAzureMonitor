@@ -36,4 +36,5 @@ az deployment group create -n mycontainerapp -g $MY_RG -f container-app-arm.json
 ```
 
 #### Check Log Destinations
-Navigate to Storage Account in Portal and see exported logs
+Navigate to Storage Account in Portal.
+Logs exported to the storage account can be found in a container named `insights-logs-containerappconsolelogs`
