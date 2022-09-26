@@ -1,4 +1,6 @@
-## Azure Monitor Integration with Container Apps Demo
+## Azure Monitor Integration with Container Apps
+
+For this example we will be creating an Container App Environment with Azure Monitor Enabled and then create a Diagnostic Settings resource to export those logs to a Azure Storage Account.
 
 #### Prerequisite Resources
 
@@ -26,7 +28,6 @@ STORAGE_ACC_ID=$(az storage account show -n $ACA_STORAGE_ACC -g $MY_RG --query i
 # Create Azure Monitor Resource
 az monitor diagnostic-settings create --name mydiagnosticsettings --resource $ACA_ENV_ID --storage-account $STORAGE_ACC_ID --logs '@azure-monitor-log-options.json'
 ```
-**Note:** Log Analytics Exporting Support Coming Soon
 
 #### Produce Logs
 ```bash
